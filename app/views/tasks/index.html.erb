@@ -2,7 +2,11 @@
 <ul>
   <% @tasks.each do |task| %>
     <li>
-      <%= [true, false].sample ? "⬛" : "☐" %>
+      <% if task.completed? %>
+        <i class="fa-solid fa-square-check"></i>
+      <%else%>
+         <i class="fa-regular fa-square-check"></i>
+       <%end%>
       <%= link_to task.title, task_path(task.id) %>
       <%= link_to tasks_path(@task),
                   method: :delete,
